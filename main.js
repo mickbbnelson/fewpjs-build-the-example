@@ -15,19 +15,19 @@ function liker(event) {
   let heartTarget = event.target;
   mimicServerCall()
   .then(function(message) {
+    if (heartTarget.className === 'like-glyph activated-heart') {
+      heartTarget.innerHTML = '♡';
+      heartTarget.classList.remove('activated-heart');
+    } else {
     heartTarget.innerHTML = '♥';
     heartTarget.classList.add('activated-heart');
+    }
   })
   .catch(function(error){
     errorDisplay.classList.remove('hidden');
     errorDisplay.innerHTML = error;
     setTimeout(() => {errorDisplay.classList.add('hidden')}, 3000);
   })
-  if (heartTarget.className === 'activated-heart') {
-    debugger
-    heartTarget.innerHTML = '♡';
-    heartTarget.classList.remove('activated-heart');
-  }
 }
 
 
